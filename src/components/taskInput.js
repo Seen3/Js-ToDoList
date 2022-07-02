@@ -6,24 +6,43 @@ function taskInput(listOfTasks) {
     const taskAdd = document.createElement('div');
     taskAdd.classList.add('task-add');
     const taskInputName = document.createElement('input');
+    const dateInput=document.createElement('input');
+
     taskInputName.placeholder = "Enter Task Here";
     taskInputName.id = "input-task";
+    dateInput.id="input-date";
+    dateInput.type='date';
     taskAdd.appendChild(taskInputName);
+    taskAdd.appendChild(dateInput);
     const buttonAdd = document.createElement('div');
     buttonAdd.innerText = 'Add';
     buttonAdd.classList.add('add-button');
     const elements = document.createElement('div');
     buttonAdd.addEventListener('click', () => {
         elements.innerHTML = null;
-        const input = document.getElementById('input-task')
+        const input = document.getElementById('input-task');
+        const time=document.getElementById('input-date');
+        console.log(time.value);
         let task = input.value;
+        let dateOb=new Date();
+        let due=false;
+        let compTime=new Date(time.value);
+        let timeStamp=time.value.split('-').reverse().join('-');
+        let currentDate=`${dateOb.getDate()}-${dateOb.getMonth()+1}-${dateOb.getFullYear()}`;
+        if (!(compTime>dateOb))
+        {
+            due=true;
+        }
+
+        console.log(timeStamp,currentDate,due);
         input.value = "";
-        listOfTasks.push({ 'task': task });
+        listOfTasks.push({ 'task': task ,'time':timeStamp,'due':due});
         listOfTasks.forEach(task => {
-            const taskComponent = taskbox(task);
+            const taskComponent = taskbox(task,listOfTasks);
+            taskComponent.id=elements.childNodes.length;
             task['id'] = elements.childNodes.length;
             elements.appendChild(taskComponent);
-            console.log(task);
+            
         });
         wrapper.appendChild(elements);
     })

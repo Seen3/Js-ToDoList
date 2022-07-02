@@ -1,26 +1,44 @@
 .task-list-box{
-    background-color: #dc2f02;
-    color: #faa307;
+    
     display: flex;
     justify-content: space-around;
     align-items: center;
     width:80vw;
     margin: 1px auto;
     border-radius: 3em;
+    
+}
+.time-false{
+    background-color: #31f82a;
+    border: 2px solid #046a51;
+    color: #01924f;
+}
+
+.time-true{
+    background-color: #dc2f02;
+    color: #faa307;
     border: 2px solid #6a040f;
 }
 .trash-icon{
     width: 50px;
     height:50px;
 }
-.delete-button{
+.time-false>.delete-button{
+    background-color: #1c9d02;
+}
+.time-true>.delete-button{
     background-color: #9d0208;
+}
+.delete-button{
     border-radius: 5em;
     padding: 1em;
     cursor: pointer;
 }
-.delete-button:hover{
+.time-true>.delete-button:hover{
     background-color: #faa307;
+}
+.time-false>.delete-button:hover{
+    background-color: #02790c;
 }
 .text{
     font-size: 3em;
