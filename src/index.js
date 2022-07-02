@@ -15,11 +15,4 @@ if(localStorage.getItem('list'))
         content.appendChild(taskComponent); 
     });
 } 
-
-
-
-
-
-
-
 document.body.appendChild(content);
