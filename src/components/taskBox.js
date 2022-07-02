@@ -31,6 +31,7 @@ function taskbox(task,listOfTasks)
         console.log("Deleted element has id ",id);
         event.target.parentElement.parentElement.remove();
         listOfTasks.splice(listOfTasks.findIndex(a => a.id === id) , 1);
+        localStorage.setItem('list',JSON.stringify(listOfTasks));
         event.target.parentElement.parentElement.remove();
         
     })

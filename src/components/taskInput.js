@@ -22,7 +22,6 @@ function taskInput(listOfTasks) {
         elements.innerHTML = null;
         const input = document.getElementById('input-task');
         const time=document.getElementById('input-date');
-        console.log(time.value);
         let task = input.value;
         let dateOb=new Date();
         let due=false;
@@ -34,15 +33,14 @@ function taskInput(listOfTasks) {
             due=true;
         }
 
-        console.log(timeStamp,currentDate,due);
         input.value = "";
         listOfTasks.push({ 'task': task ,'time':timeStamp,'due':due});
+        localStorage.setItem('list',JSON.stringify(listOfTasks));
         listOfTasks.forEach(task => {
             const taskComponent = taskbox(task,listOfTasks);
             taskComponent.id=elements.childNodes.length;
             task['id'] = elements.childNodes.length;
-            elements.appendChild(taskComponent);
-            
+            elements.appendChild(taskComponent); 
         });
         wrapper.appendChild(elements);
     })
